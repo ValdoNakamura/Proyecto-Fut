@@ -40,5 +40,12 @@ public class CrearTorneo {
         }
     }
 
-    
+    //funcion para obtener el ganador
+    public String obtenerGanador() {
+        return equipos.stream()
+            .max((e1, e2) -> (e1.obtenerPuntos() > e2.obtenerPuntos()) ? 1 :
+                             (e1.obtenerPuntos() < e2.obtenerPuntos()) ? -1 : 0)
+            .map(Equipo::obtenerNombre)
+            .orElse("No hay equipos");
+    }
 }
